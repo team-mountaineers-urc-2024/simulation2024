@@ -1,0 +1,927 @@
+<?xml version="1.0"?>
+
+<robot name="wanderer_II" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Import sensor plugin -->
+  <gazebo>
+    <plugin filename="ignition-gazebo-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+  </gazebo>
+
+  <link name="base_link">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </link>
+
+  <link name="robot_base">
+    <inertial>
+      <origin
+        xyz="-0.153791174064301 0.0974672992453615 0.00588414829503324"
+        rpy="0 0 0" />
+      <mass
+        value="96.7490415336591" />
+      <inertia
+        ixx="2.86555455664308"
+        ixy="-0.00219519846779945"
+        ixz="-0.000628989052193264"
+        iyy="3.46674166060761"
+        iyz="-0.000686654400421217"
+        izz="1.23187799751044" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+        rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_rotation" type="fixed">
+    <origin
+      xyz="0 0 1.5"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="robot_base" />
+  </joint>
+
+  <link name="Left_Boguie">
+    <inertial>
+      <origin
+        xyz="-0.00576651386114407 0.175045595441227 0.0128648542147638"
+        rpy="0 0 0" />
+      <mass
+        value="2.32950192493889" />
+      <inertia
+        ixx="0.00551591290072658"
+        ixy="-0.00171704236488451"
+        ixz="3.14127956266204E-06"
+        iyy="0.0575648126028138"
+        iyz="-9.65204017498361E-05"
+        izz="0.0611920040825802" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Left_Boguie.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Left_Boguie.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Left_Boguie_Joint" type="fixed">
+    <origin
+      xyz="-0.03629 0.03129 -0.39897"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Left_Boguie" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link name="LB_Wheel">
+    <inertial>
+      <origin
+        xyz="-2.96058691590106E-07 -9.79216909779979E-08 0.000350214534292459"
+        rpy="0 0 0" />
+      <mass
+        value="1.24926679693879" />
+      <inertia
+        ixx="0.00934465879503419"
+        ixy="4.46259865221882E-09"
+        ixz="8.23431338054817E-09"
+        iyy="0.00934464514992829"
+        iyz="1.54213553263347E-08"
+        izz="0.0143303307026045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/LB_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/LB_Wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="LB_Wheel_Joint" type="continuous">
+    <origin
+      xyz="-0.441258446912644 0.251207226592391 0.0993465830020424"
+      rpy="0 0 0" />
+    <parent
+      link="Left_Boguie" />
+    <child
+      link="LB_Wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link name="LF_Wheel">
+    <inertial>
+      <origin
+        xyz="-2.75870797983302E-07 3.58294659608127E-07 -0.00056115676675389"
+        rpy="0 0 0" />
+      <mass
+        value="1.29398862284058" />
+      <inertia
+        ixx="0.00935013342837077"
+        ixy="4.31754356167998E-09"
+        ixz="8.20757418511741E-09"
+        iyy="0.00935011946388382"
+        iyz="1.55141693328379E-08"
+        izz="0.0143401889474166" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/LF_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/LF_Wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="LF_Wheel_Joint" type="continuous">
+    <origin
+      xyz="0.423764068028638 0.279710747580116 0.0993465830020371"
+      rpy="0 0 0" />
+    <parent
+      link="Left_Boguie" />
+    <child
+      link="LF_Wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link name="Right Bougie">
+    <inertial>
+      <origin
+        xyz="0.128012853511652 -0.15204295317915 0.00267532384375324"
+        rpy="0 0 0" />
+      <mass
+        value="1.78119341351116" />
+      <inertia
+        ixx="0.00523071840753533"
+        ixy="0.00171364141000337"
+        ixz="2.13072570525521E-06"
+        iyy="0.0572765021055517"
+        iyz="9.47681220728325E-05"
+        izz="0.0608394313052524" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Right_Bougie.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+        rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Right_Bougie.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Right_Bougie_Joint" type="fixed">
+    <origin
+      xyz="-0.03629 0.03129 0.39897"
+      rpy="0 0 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Right Bougie" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link name="RB_Wheel">
+    <inertial>
+      <origin
+        xyz="-2.57026749522771E-07 7.04241307381004E-07 0.000350213236401165"
+        rpy="0 0 0" />
+      <mass
+        value="1.24926675341187" />
+      <inertia
+        ixx="0.00934464565043098"
+        ixy="3.22204638619879E-09"
+        ixz="-9.44781297796861E-09"
+        iyy="0.00934463075970712"
+        iyz="-1.47196836065926E-08"
+        izz="0.0143303115946363" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/RB_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/RB_Wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="RB_Wheel_Joint" type="continuous">
+    <origin
+      xyz="-0.441258446912646 -0.251207226592402 0.099346583002037"
+      rpy="0 0 0" />
+    <parent
+      link="Right Bougie" />
+    <child
+      link="RB_Wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <link name="RF_Wheel">
+    <inertial>
+      <origin
+        xyz="9.58804463602192E-08 -7.09435375112477E-07 0.000349923064460689"
+        rpy="0 0 0" />
+      <mass
+        value="1.24925985752233" />
+      <inertia
+        ixx="0.00934464583882525"
+        ixy="3.36836573324745E-09"
+        ixz="-9.18708871377895E-09"
+        iyy="0.00934463135800159"
+        iyz="-1.51459024116129E-08"
+        izz="0.0143303121386094" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/RF_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/RF_Wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="RF_Wheel_Joint" type="continuous">
+    <origin
+      xyz="0.423764068028621 -0.279710747580124 0.0993465830020422"
+      rpy="0 0 0" />
+    <parent
+      link="Right Bougie" />
+    <child
+      link="RF_Wheel" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <link name="Differential">
+    <inertial>
+      <origin
+        xyz="-2.44358699941216E-12 0.0080786028200816 -0.0177935814197831"
+        rpy="0 0 0" />
+      <mass
+        value="0.786370258163125" />
+      <inertia
+        ixx="0.000465826776708666"
+        ixy="9.9362969665708E-14"
+        ixz="-5.18848676681452E-15"
+        iyy="0.0223131373919585"
+        iyz="-1.56167687365088E-08"
+        izz="0.0223061367769684" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Differential.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Differential.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Differential_Joint" type="fixed">
+    <origin
+      xyz="-0.45433 0.033 0"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Differential" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <link name="Front_Camera">
+    <inertial>
+      <origin
+        xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470288707068895" />
+      <inertia
+        ixx="4.39178954043001E-06"
+        ixy="-2.6587461829647E-12"
+        ixz="3.09228404230734E-11"
+        iyy="3.29793928552999E-05"
+        iyz="8.44203479212317E-08"
+        izz="3.37748134686877E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Front_Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Front_Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Front_Camera_Joint" type="fixed">
+    <origin
+      xyz="-0.0040292 0.1997 0"
+      rpy="0 1.5708 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Front_Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="Left_Camera">
+    <inertial>
+      <origin
+        xyz="-1.06281777434436E-07 0.000966339550162981 -0.00671854201515457"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470288707068899" />
+      <inertia
+        ixx="4.39178954042625E-06"
+        ixy="-2.65874628862722E-12"
+        ixz="3.09228391040839E-11"
+        iyy="3.29793928552958E-05"
+        iyz="8.44203479212438E-08"
+        izz="3.37748134686874E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Left_Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Left_Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Left_Camera_Joint" type="fixed">
+    <origin
+      xyz="-0.031532 0.1997 -0.3275"
+      rpy="-3.1416 0 -3.1416" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Left_Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="Right_Camera">
+    <inertial>
+      <origin
+        xyz="-1.0628177715688E-07 0.000966339550163009 -0.00671854201515476"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470288707068896" />
+      <inertia
+        ixx="4.39178954042315E-06"
+        ixy="-2.65874633137995E-12"
+        ixz="3.09228382097888E-11"
+        iyy="3.29793928552927E-05"
+        iyz="8.44203479212762E-08"
+        izz="3.37748134686874E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Right_Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Right_Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Right_Camera_Joint" type="fixed">
+    <origin
+      xyz="-0.031532 0.1997 0.3275"
+      rpy="0 0 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Right_Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="Fumunda_Camera">
+    <inertial>
+      <origin
+        xyz="-1.06281777517703E-07 0.000966339550162898 -0.00671854201515448"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470288707068896" />
+      <inertia
+        ixx="4.39178954043166E-06"
+        ixy="-2.65874624976773E-12"
+        ixz="3.09228391248176E-11"
+        iyy="3.29793928553015E-05"
+        iyz="8.44203479212515E-08"
+        izz="3.37748134686877E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Fumunda_Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Fumunda_Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Fumunda_Camera_Joint" type="fixed">
+    <origin
+      xyz="-0.26365 -0.028704 0.0125"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Fumunda_Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="Back_Camera">
+    <inertial>
+      <origin
+        xyz="-1.06281777698114E-07 0.000966339550163009 -0.00671854201515463"
+        rpy="0 0 0" />
+      <mass
+        value="0.0470288707068897" />
+      <inertia
+        ixx="4.39178954042469E-06"
+        ixy="-2.65874617926756E-12"
+        ixz="3.09228407300644E-11"
+        iyy="3.29793928552947E-05"
+        iyz="8.44203479212311E-08"
+        izz="3.37748134686879E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Back_Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.05 0.05 0.05 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find simulation2024)/models/wanderer_II/Back_Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Back_Camera_Joint"
+    type="fixed">
+    <origin
+      xyz="-0.36865 -0.028704 -0.0125"
+      rpy="3.1416 1.5708 0" />
+    <parent
+      link="robot_base" />
+    <child
+      link="Back_Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="lidar">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <mass value="0.0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+    <visual name="lidar_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <cylinder radius=".0515" length="0.0717" />
+      </geometry>
+      <material name="lidar">
+        <color rgba="0.0 0.121568627451 0.294117647059 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <cylinder radius="0.035" length="0.015" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_lidar_joint" type="fixed">
+    <origin xyz="0.156 0.0 0.03585" rpy="-1.57079632679 0.0 0.0" />
+    <parent link="robot_base" />
+    <child link="lidar" />
+  </joint>
+
+  <gazebo>
+    <plugin
+      filename="ignition-gazebo-diff-drive-system"
+      name="gz::sim::systems::DiffDrive">
+      <left_joint>LF_Wheel_Joint</left_joint>
+      <left_joint>LB_Wheel_Joint</left_joint>
+      <right_joint>RF_Wheel_Joint</right_joint>
+      <right_joint>RB_Wheel_Joint</right_joint>
+      <wheel_separation>0.9398</wheel_separation>
+      <wheel_radius>0.1397</wheel_radius>
+      <max_linear_acceleration>1</max_linear_acceleration>
+      <min_linear_acceleration>-1</min_linear_acceleration>
+      <max_angular_acceleration>2</max_angular_acceleration>
+      <min_angular_acceleration>-2</min_angular_acceleration>
+      <max_linear_velocity>0.5</max_linear_velocity>
+      <min_linear_velocity>-0.5</min_linear_velocity>
+      <max_angular_velocity>1</max_angular_velocity>
+      <min_angular_velocity>-1</min_angular_velocity>
+      <topic>cmd_vel</topic>
+    </plugin>
+  </gazebo>
+
+  <!-- Attach the sensor frames to the model -->
+  <gazebo>
+    <frame name="front_camera_frame" attached_to="Front_Camera">
+      <pose>0 0 0 3.14159265359 -1.57079632679 1.57079632679</pose>
+    </frame>
+  </gazebo>
+
+  <gazebo>
+    <frame name="back_camera_frame" attached_to="Back_Camera">
+      <pose>0 0 0 0.0 -1.57079632679 1.57079632679</pose>
+    </frame>
+  </gazebo>
+
+  <gazebo>
+    <frame name="left_camera_frame" attached_to="Left_Camera">
+      <pose>0 0 0 3.14159265359 -1.57079632679 1.57079632679</pose>
+    </frame>
+  </gazebo>
+
+  <gazebo>
+    <frame name="right_camera_frame" attached_to="Right_Camera">
+      <pose>0 0 0 3.14159265359 -1.57079632679 1.57079632679</pose>
+    </frame>
+  </gazebo>
+
+  <gazebo>
+    <frame name="fumunda_dummy_frame" attached_to="Fumunda_Camera">
+      <pose>0 0 0 -1.57079632679 1.57079632679 0.0</pose>
+    </frame>
+    <frame name="fumunda_camera_frame" attached_to="fumunda_dummy_frame">
+      <pose>0 0 0 0.0 0.349065850399 0.0</pose>
+    </frame>
+  </gazebo>
+
+  <gazebo>
+    <frame name="lidar_frame" attached_to="lidar">
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </gazebo>
+
+  <!-- Add the sensors themselves to the model -->
+
+  <gazebo reference="Front_Camera">
+    <sensor name="front_camera" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>front_camera</topic>
+      <pose relative_to='front_camera_frame'>0 0 0 0 0 0</pose>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="Back_Camera">
+    <sensor name="back_camera" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>back_camera</topic>
+      <pose relative_to='back_camera_frame'>0 0 0 0 0 0</pose>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="Left_Camera">
+    <sensor name="left_camera" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>left_camera</topic>
+      <pose relative_to='left_camera_frame'>0 0 0 0 0 0</pose>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="Right_Camera">
+    <sensor name="right_camera" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>right_camera</topic>
+      <pose relative_to='right_camera_frame'>0 0 0 0 0 0</pose>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="Fumunda_Camera">
+    <sensor name="fumunda_camera" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>fumunda_camera</topic>
+      <pose relative_to='fumunda_camera_frame'>0 0 0 0 0 0</pose>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="lidar">
+    <sensor name="lidar" type='gpu_lidar'>
+      <pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
+      <topic>lidar</topic>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>640</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159265359</min_angle>
+            <max_angle>3.14159265359</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.349065850399</min_angle>
+            <max_angle>0.349065850399</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.08</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <alwaysOn>true</alwaysOn>
+      <visualize>true</visualize>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+
+</robot>

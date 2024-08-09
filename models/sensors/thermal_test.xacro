@@ -1,0 +1,70 @@
+<?xml version='1.0'?>
+
+<robot name="thermal_test" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="robot_name" value="thermal_test" />
+
+    <!-- Make Base Link -->
+    <link name="base_link">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </link>
+
+	<!-- Make stand link -->
+    <link name="thermal_stand">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0416666666667" ixy="0.0" ixz="0.0" iyy="0.0416666666667" iyz="0.0" izz="0.0416666666667"/>
+        </inertial>
+        <visual name="thermal_stand_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.5 0.5"/>
+            </geometry>
+            <material name="thermal_stand">
+                <color rgba="0.5 0.5 0.5 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_stand_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="thermal_stand"/>
+    </joint>
+
+    <link name="thermal">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="thermal_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.094 0.0433 0.0433"/>
+            </geometry>
+            <material name="thermal">
+                <color rgba="0.6712 0.0431 0.2857 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.094 0.0433 0.0433"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="stand_thermal_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.27165" rpy="0.0 0.0 0.0"/>
+        <parent link="thermal_stand"/>
+        <child link="thermal"/>
+    </joint>
+
+</robot>

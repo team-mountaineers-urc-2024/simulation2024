@@ -1,0 +1,1924 @@
+<?xml version="1.0"?>
+
+<robot name="wanderer_II" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Import sensor plugin -->
+    <gazebo>
+        <plugin filename="ignition-gazebo-sensors-system"
+            name="gz::sim::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+    </gazebo>
+
+    <!-- Models -->
+
+    <link name="base_link">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </link>
+
+    <link name="back_chassis">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Rear_Reference.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.7411764705882353 0.7176470588235294 0.1843137254901961 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Rear_Reference.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="hinge">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Simplified_Hinge.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Simplified_Hinge.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="front_chassis">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Rear_Reference.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.7411764705882353 0.7176470588235294 0.1843137254901961 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Rear_Reference.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="br_motor_pod">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_2.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.1 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="bl_motor_pod">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_1.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.1 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 3.14159265359" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="fr_motor_pod">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_1.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.1 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="fl_motor_pod">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_2.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.1 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 3.14159265359 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Motor_Pod_2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Left Front Wheg -->
+
+    <link name="left_front_wheg">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0254" length="0.0254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lf1">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lf2">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lf3">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lf4">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lf5">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Right Front Wheg -->
+
+    <link name="right_front_wheg">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0254" length="0.0254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rf1">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rf2">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rf3">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rf4">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rf5">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Left Back Wheg -->
+
+    <link name="left_back_wheg">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0254" length="0.0254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lb1">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lb2">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lb3">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lb4">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lb5">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Right Back Wheg -->
+
+    <link name="right_back_wheg">
+        <inertial>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0254" length="0.0254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rb1">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rb2">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rb3">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rb4">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="rb5">
+        <inertial>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <mass
+                value="96.7490415336591" />
+            <inertia
+                ixx="2.86555455664308"
+                ixy="-0.00219519846779945"
+                ixz="-0.000628989052193264"
+                iyy="3.46674166060761"
+                iyz="-0.000686654400421217"
+                izz="1.23187799751044" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0127" length="0.254" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.5 0.5 0.5 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 -0.127"
+                rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.254" length="0.0254" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Cameras -->
+    <link name="bir_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="bil_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="fir_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="fil_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="frontr_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="frontl_camera">
+        <inertial>
+            <origin
+                xyz="-1.06281777656481E-07 0.000966339550162953 -0.00671854201515454"
+                rpy="0 0 0" />
+            <mass
+                value="0.0470288707068895" />
+            <inertia
+                ixx="4.39178954043001E-06"
+                ixy="-2.6587461829647E-12"
+                ixz="3.09228404230734E-11"
+                iyy="3.29793928552999E-05"
+                iyz="8.44203479212317E-08"
+                izz="3.37748134686877E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.05 0.05 0.05 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find simulation2024)/models/heimdall/Camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- Joints -->
+
+
+    <joint name="base_back" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <parent link="base_link" />
+        <child link="back_chassis" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="back_hinge" type="continuous">
+        <origin xyz="0.2931185 0.0 0.0" rpy="0.0 1.57079632679 0.0" />
+        <parent link="back_chassis" />
+        <child link="hinge" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="hinge_front" type="continuous">
+        <origin xyz="0.0 0.0 0.2931185" rpy="0 -1.57079632679 0.0" />
+        <parent link="hinge" />
+        <child link="front_chassis" />
+        <axis xyz="1.0 0.0 0.0" />
+    </joint>
+
+    <joint name="back_rpod" type="fixed">
+        <origin xyz="-0.122 -0.3763 -0.07341" rpy="0.0 0.0 0.0" />
+        <parent link="back_chassis" />
+        <child link="br_motor_pod" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="back_lpod" type="fixed">
+        <origin xyz="-0.122 0.3763 -0.07341" rpy="0.0 0.0 0.0" />
+        <parent link="back_chassis" />
+        <child link="bl_motor_pod" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="front_rpod" type="fixed">
+        <origin xyz="0.122 -0.3763 -0.07341" rpy="0.0 0.0 0.0" />
+        <parent link="front_chassis" />
+        <child link="fr_motor_pod" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="front_lpod" type="fixed">
+        <origin xyz="0.122 0.3763 -0.07341" rpy="0.0 0.0 0.0" />
+        <parent link="front_chassis" />
+        <child link="fl_motor_pod" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <!-- Left Front Wheg Joints -->
+
+    <joint name="left_front_wheg_joint" type="continuous">
+        <origin xyz="0 0.064 -0.05" rpy="1.57079632679 0.0 0.0" />
+        <parent link="fl_motor_pod" />
+        <child link="left_front_wheg" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lf1_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 0.0" />
+        <parent link="left_front_wheg" />
+        <child link="lf1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lf2_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 1.25663706144" />
+        <parent link="left_front_wheg" />
+        <child link="lf2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lf3_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 2.51327412287" />
+        <parent link="left_front_wheg" />
+        <child link="lf3" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lf4_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 3.76991118431" />
+        <parent link="left_front_wheg" />
+        <child link="lf4" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lf5_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 5.02654824574" />
+        <parent link="left_front_wheg" />
+        <child link="lf5" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <!-- Right Front Wheg Joints -->
+
+    <joint name="right_front_wheg_joint" type="continuous">
+        <origin xyz="0 -0.064 -0.05" rpy="1.57079632679 0.0 0.0" />
+        <parent link="fr_motor_pod" />
+        <child link="right_front_wheg" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rf1_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 0.0" />
+        <parent link="right_front_wheg" />
+        <child link="rf1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rf2_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 1.25663706144" />
+        <parent link="right_front_wheg" />
+        <child link="rf2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rf3_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 2.51327412287" />
+        <parent link="right_front_wheg" />
+        <child link="rf3" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rf4_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 3.76991118431" />
+        <parent link="right_front_wheg" />
+        <child link="rf4" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rf5_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 5.02654824574" />
+        <parent link="right_front_wheg" />
+        <child link="rf5" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <!-- Left Back Wheg Joints -->
+
+    <joint name="left_back_wheg_joint" type="continuous">
+        <origin xyz="0 0.064 -0.05" rpy="1.57079632679 0.0 0.0" />
+        <parent link="bl_motor_pod" />
+        <child link="left_back_wheg" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lb1_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 0.0" />
+        <parent link="left_back_wheg" />
+        <child link="lb1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lb2_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 1.25663706144" />
+        <parent link="left_back_wheg" />
+        <child link="lb2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lb3_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 2.51327412287" />
+        <parent link="left_back_wheg" />
+        <child link="lb3" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lb4_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 3.76991118431" />
+        <parent link="left_back_wheg" />
+        <child link="lb4" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="lb5_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 5.02654824574" />
+        <parent link="left_back_wheg" />
+        <child link="lb5" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <!-- Right Back Wheg Joints -->
+
+    <joint name="right_back_wheg_joint" type="continuous">
+        <origin xyz="0 -0.064 -0.05" rpy="1.57079632679 0.0 0.0" />
+        <parent link="br_motor_pod" />
+        <child link="right_back_wheg" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rb1_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 0.0" />
+        <parent link="right_back_wheg" />
+        <child link="rb1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rb2_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 1.25663706144" />
+        <parent link="right_back_wheg" />
+        <child link="rb2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rb3_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 2.51327412287" />
+        <parent link="right_back_wheg" />
+        <child link="rb3" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rb4_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 3.76991118431" />
+        <parent link="right_back_wheg" />
+        <child link="rb4" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="rb5_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.57079632679 0.0 5.02654824574" />
+        <parent link="right_back_wheg" />
+        <child link="rb5" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <!-- Camera Joints -->
+    <joint name="bir_camera_joint" type="fixed">
+        <origin xyz="0.13335 -0.2225 0.1" rpy="0.0 0.0 -0.785398163397" />
+        <parent link="back_chassis" />
+        <child link="bir_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="bil_camera_joint" type="fixed">
+        <origin xyz="0.13335 0.2225 0.1" rpy="0.0 0.0 0.785398163397" />
+        <parent link="back_chassis" />
+        <child link="bil_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="frontr_camera_joint" type="fixed">
+        <origin xyz="-0.19 0.1 0.12" rpy="0.0 0.0 1.57079632679" />
+        <parent link="front_chassis" />
+        <child link="frontr_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="fir_camera_joint" type="fixed">
+        <origin xyz="-0.13335 -0.2225 0.1" rpy="0.0 0.0 -2.35619449019" />
+        <parent link="front_chassis" />
+        <child link="fir_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="fil_camera_joint" type="fixed">
+        <origin xyz="-0.13335 0.2225 0.1" rpy="0.0 0.0 2.35619449019" />
+        <parent link="front_chassis" />
+        <child link="fil_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+    <joint name="frontl_camera_joint" type="fixed">
+        <origin xyz="-0.19 -0.1 0.12" rpy="0.0 0.0 -1.57079632679" />
+        <parent link="front_chassis" />
+        <child link="frontl_camera" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+
+<!-- Plugins -->
+
+    <!-- Diff Drive -->
+    <gazebo>
+        <plugin
+            filename="ignition-gazebo-diff-drive-system"
+            name="gz::sim::systems::DiffDrive">
+            <right_joint>left_front_wheg_joint</right_joint>
+            <right_joint>left_back_wheg_joint</right_joint>
+            <left_joint>right_front_wheg_joint</left_joint>
+            <left_joint>right_back_wheg_joint</left_joint>
+            <wheel_separation>0.650</wheel_separation>
+            <wheel_radius>0.254</wheel_radius>
+            <max_linear_acceleration>1</max_linear_acceleration>
+            <min_linear_acceleration>-1</min_linear_acceleration>
+            <max_angular_acceleration>2</max_angular_acceleration>
+            <min_angular_acceleration>-2</min_angular_acceleration>
+            <max_linear_velocity>0.5</max_linear_velocity>
+            <min_linear_velocity>-0.5</min_linear_velocity>
+            <max_angular_velocity>1</max_angular_velocity>
+            <min_angular_velocity>-1</min_angular_velocity>
+            <topic>cmd_vel</topic>
+        </plugin>
+    </gazebo>
+
+    <!-- Cameras -->
+    <gazebo>
+        <frame name="bir_camera_frame" attached_to="bir_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="bir_camera">
+        <sensor name="bir_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>bir_camera</topic>
+          <pose relative_to='bir_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+    <gazebo>
+        <frame name="bil_camera_frame" attached_to="bil_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="bil_camera">
+        <sensor name="bil_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>bil_camera</topic>
+          <pose relative_to='bil_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+    <gazebo>
+        <frame name="fir_camera_frame" attached_to="fir_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="fir_camera">
+        <sensor name="fir_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>fir_camera</topic>
+          <pose relative_to='fir_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+    <gazebo>
+        <frame name="fil_camera_frame" attached_to="fil_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="fil_camera">
+        <sensor name="fil_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>fil_camera</topic>
+          <pose relative_to='fil_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+    <gazebo>
+        <frame name="frontr_camera_frame" attached_to="frontr_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="frontr_camera">
+        <sensor name="frontr_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>frontr_camera</topic>
+          <pose relative_to='frontr_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+    <gazebo>
+        <frame name="frontl_camera_frame" attached_to="frontl_camera">
+        <pose>0 0 0 0 0 0</pose>
+        </frame>
+    </gazebo>
+
+    <gazebo reference="frontl_camera">
+        <sensor name="frontl_camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>frontl_camera</topic>
+          <pose relative_to='frontl_camera_frame'>0 0 0 0 0 0</pose>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+      </gazebo>
+
+</robot>

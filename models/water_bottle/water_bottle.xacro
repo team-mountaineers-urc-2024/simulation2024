@@ -1,0 +1,88 @@
+<?xml version='1.0'?>
+
+<robot name="water_bottle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:property name="robot_name" value="water_bottle" />
+	<xacro:arg name="arg mass" default="1.0"/>
+    
+    <!-- Arguments to be passed in -->
+    <xacro:arg name="mass" default="1.0"/>
+    <xacro:arg name="red" default="0.9"/>
+    <xacro:arg name="green" default="0.2"/>
+    <xacro:arg name="blue" default="0.7"/>
+    <xacro:arg name="alpha" default="0.8"/>
+
+
+    <!-- Make Base Link -->
+    <link name="base_link">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </link>
+
+	<!-- Make main bottle link -->
+    <link name="main_bottle">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="$(arg mass)"/>
+            <inertia ixx="${$(arg mass) * 0.00435833333333}" ixy="0.0" ixz="0.0" iyy="${$(arg mass) * 0.00435833333333}" iyz="0.0" izz="${$(arg mass) * 0.0010125}"/>
+        </inertial>
+        <visual name="main_bottle_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.045" length="0.215"/>
+            </geometry>
+            <material name="bottle">
+                <color rgba="$(arg red) $(arg green) $(arg blue) $(arg alpha)"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.045" length="0.215"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_bottle_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="main_bottle"/>
+    </joint>
+
+    <link name="bottle_cap">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="bottle_cap_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.035" length="0.015"/>
+            </geometry>
+            <material name="cap">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.035" length="0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="bottle_cap_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.115" rpy="0.0 0.0 0.0"/>
+        <parent link="main_bottle"/>
+        <child link="bottle_cap"/>
+    </joint>
+
+    <!-- Temporary Joint to keep in place -->
+    <link name="world"></link>
+
+	<joint name="world_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="world"/>
+		<child link="base_link" />
+	</joint>
+
+</robot>
